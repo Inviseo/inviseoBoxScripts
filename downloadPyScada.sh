@@ -1,5 +1,5 @@
 #!/bin/bash
 wget https://github.com/clavay/PyScada/archive/refs/heads/PyScadaMain.zip
-unzip main.zip
-cd PyScada-main
+unzipPyScadaMain.zip
+cd PyScadaMain
 sudo ./install_system.sh
