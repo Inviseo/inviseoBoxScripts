@@ -1,2 +1,2 @@
 #!/bin/bash
-wget -O ./PyScada https://github.com/vincent-inviseo/PyScada.git && cd PyScada && sudo ./install.sh
+wget https://github.com/vincent-inviseo/PyScada/archive/refs/heads/main.zip && cd PyScada && sudo ./install.sh
