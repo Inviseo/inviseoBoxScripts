@@ -108,6 +108,13 @@ function installLaboREM() {
     activatePlugin
     cd ..
 }
+function installWebService() {
+    echo "install WebService"
+    git clone https://github.com/clavay/PyScada-WebService.git
+    cd PyScada-WebService
+    activatePlugin
+    cd ..
+}
 
 function activatePlugin() {
     # activate the PyScada virtual environment
@@ -122,9 +129,28 @@ function activatePlugin() {
     sudo systemctl restart gunicorn pyscada
 }
 
-installModbus
+PS3='Enter plugin would you install: '
+    plugins=("Modbus" "WebService" "Quit")
+    select plug in "${plugins[@]}"; do
+        case $plug in
+            "Modbus")
+            installModbus
+            break
+            ;;
+            "WebService")
+            installWebService
+            break
+            ;;
+            "Quit")
+            exit
+            ;;
+            *) echo "Invalid option";;
+        esac
+done
 
-installSystemStat
+# installModbus
+
+# installSystemStat
 
 # installBacNet
 
@@ -132,13 +158,13 @@ installSystemStat
 
 # installSMBus
 
-installOneWire
+# installOneWire
 
 # installOPCUA
 
-installMeterBus
+# installMeterBus
 
-installGPIO
+# installGPIO
 
 # installScripting
 
