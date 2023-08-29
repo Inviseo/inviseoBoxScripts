@@ -164,7 +164,7 @@ systemctl restart nginx
 echo "installation des dépendances système frontale"
 sleep 3
 sudo apt update -y
-sudo apt install npm -t
+sudo apt install npm -y
 npm install -g yarn
 
 # Installer les dépendances du projet avec yarn
