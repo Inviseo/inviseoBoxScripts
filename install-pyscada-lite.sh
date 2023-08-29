@@ -3,10 +3,11 @@
 # Variables globales
 # Chemin du dossier à vérifier
 dossier_installation_pyscada_lite="/var/www/pyscada_lite"
+dossier_instalation_pyscada_lite_front="/var/www/pyscada_lite_front"
 # chemin du script
 chemin_actuel="$(pwd)"
 chemin_avec_static="$chemin_actuel/pyscada-lite-back/config/static"
-
+cd
 # Vérifier si l'utilisateur est root ou utilise sudo
 if [[ $EUID -ne 0 ]]; then
     echo "Ce script doit être exécuté en tant que root ou avec sudo."
@@ -139,6 +140,62 @@ systemctl start django_runserver.service
 # installation de la cron job
 echo "Installation de la cronjob"
 /var/www/pyscada_lite/scripts/conjob_getall_devices_variables.sh
+
+cd
+# Cloner le dépôt Git pyscada-lite-front
+echo "clonage depot pyscada lite front"
+sleep 3
+git clone https://github.com/vincent-inviseo/pyscada-lite-front.git
+
+# Se déplacer dans le répertoire du projet
+cd pyscada-lite-front
+
+# copie du fichier nginx frontal
+echo "copie et activation du serveur nginx frontal
+sleep 3
+cp ./server-config/pyscada-lite-nginx.conf /etc/nginx/sites-available
+ln -s /etc/nginx/sites-available/pyscada-lite-nginx.conf /etc/nginx/sites-enabled/
+# Redémarrage de Nginx
+echo "redemarrage des services nginx"
+sleep 3
+systemctl restart nginx
+
+# Installer les dépendances npm et yarn
+echo "installation des dépendances système frontale"
+sleep 3
+sudo apt update -y
+sudo apt install npm -t
+npm install -g yarn
+
+# Installer les dépendances du projet avec yarn
+echo "installation de yarn"
+sleep 3
+yarn install
+
+# Exécuter le script yarn build
+echo "execution du la commande de mise en production"
+sleep 3
+yarn build
+
+echo "Verification de la présence des dossiers d'installation frontal"
+sleep 3
+if [ -d "$dossier_installation_pyscada_lite_front" ]; then
+    echo "Le dossier existe."
+else
+    echo "Le dossier n'existe pas. Création en cours..."
+    mkdir -p "$dossier_installation_pyscada_lite_front"
+    echo "Dossier créé avec succès : $dossier_installation_pyscada_lite_front"
+fi
+
+# copie des fichiers de de production pour le pyscada-lite-front
+cp -r ./dist/pyscada-ui/* $dossier_installation_pyscada_front
+
+# Attribution des droits au dossier d'installation
+echo "Attributions des droits aux dossiers et fichiers"
+sleep 3
+chown -R www-data:www-data $dossier_installation_pyscada_lite_front
+chmod -R 777 $dossier_installation_pyscada_lite_front
+
 
 echo "Le script a terminé l'installation et la configuration."
 sleep 3
