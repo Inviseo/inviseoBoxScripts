@@ -151,7 +151,7 @@ git clone https://github.com/vincent-inviseo/pyscada-lite-front.git
 cd pyscada-lite-front
 
 # copie du fichier nginx frontal
-echo "copie et activation du serveur nginx frontal
+echo "copie et activation du serveur nginx frontal"
 sleep 3
 cp ./server-config/pyscada-lite-nginx.conf /etc/nginx/sites-available
 ln -s /etc/nginx/sites-available/pyscada-lite-nginx.conf /etc/nginx/sites-enabled/
