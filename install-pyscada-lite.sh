@@ -3,7 +3,7 @@
 # Variables globales
 # Chemin du dossier à vérifier
 dossier_installation_pyscada_lite="/var/www/pyscada_lite"
-dossier_instalation_pyscada_lite_front="/var/www/pyscada_lite_front"
+dossier_installation_pyscada_lite_front="/var/www/pyscada_lite_front"
 # chemin du script
 chemin_actuel="$(pwd)"
 chemin_avec_static="$chemin_actuel/pyscada-lite-back/config/static"
