@@ -188,7 +188,7 @@ else
 fi
 
 # copie des fichiers de de production pour le pyscada-lite-front
-cp -r dist/pyscada-ui/* $dossier_installation_pyscada_lite_front
+cp -r $chemin_actuel/pyscada-lite-front/dist/pyscada-ui/* $dossier_installation_pyscada_lite_front
 
 # Attribution des droits au dossier d'installation
 echo "Attributions des droits aux dossiers et fichiers"
