@@ -188,7 +188,7 @@ else
 fi
 
 # copie des fichiers de de production pour le pyscada-lite-front
-cp -r ./dist/pyscada-ui/* $dossier_installation_pyscada_front
+cp -r dist/pyscada-ui/* $dossier_installation_pyscada_lite_front
 
 # Attribution des droits au dossier d'installation
 echo "Attributions des droits aux dossiers et fichiers"
@@ -198,7 +198,4 @@ chmod -R 777 $dossier_installation_pyscada_lite_front
 
 
 echo "Le script a terminé l'installation et la configuration."
-sleep 3
-echo "suppression du dossier temporaire telechargé depuis github.com"
-rm -rf $chemin_actuel/pyscada-lite-back
 echo "Fini :) Pensez à verifier si le service tourne bien et que le back est accessible"
