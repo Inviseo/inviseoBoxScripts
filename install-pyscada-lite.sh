@@ -141,7 +141,6 @@ systemctl start django_runserver.service
 echo "Installation de la cronjob"
 /var/www/pyscada_lite/scripts/conjob_getall_devices_variables.sh
 
-cd
 # Cloner le dépôt Git pyscada-lite-front
 echo "clonage depot pyscada lite front"
 sleep 3
