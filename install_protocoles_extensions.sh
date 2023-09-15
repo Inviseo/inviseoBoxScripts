@@ -130,7 +130,7 @@ function activatePlugin() {
 }
 
 PS3='Enter plugin would you install: '
-    plugins=("Modbus" "WebService" "Quit")
+    plugins=("Modbus" "WebService" "Scripting" "Quit")
     select plug in "${plugins[@]}"; do
         case $plug in
             "Modbus")
