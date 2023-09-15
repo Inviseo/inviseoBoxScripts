@@ -141,6 +141,10 @@ PS3='Enter plugin would you install: '
             installWebService
             break
             ;;
+            "Scripting")
+            installScripting
+            break
+            ;;
             "Quit")
             exit
             ;;
