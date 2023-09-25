@@ -1,5 +1,0 @@
-include AUTHORS
-include LICENSE
-include README.rst
-include CHANGELOG.txt
-recursive-include pyscada/theme2 *
