@@ -13,6 +13,16 @@ function installVISA() {
     cd ..
 }
 
+function installTheme() {
+    echo "install Theme"
+    cd ../pyscada-inviseo-theme
+    source /home/pyscada/.venv/bin/activate
+    sudo -u pyscada pip uninstall pyscada-inviseo
+    activatePlugin
+    cd ..
+}
+
+
 function installBacNet() {
     echo "Install BackNet"
     git clone https://github.com/pyscada/PyScada-BACnet.git
@@ -130,7 +140,7 @@ function activatePlugin() {
 }
 
 PS3='Enter plugin would you install: '
-    plugins=("Modbus" "WebService" "Scripting" "Quit")
+    plugins=("Modbus" "WebService" "Scripting" "Theme" "Quit")
     select plug in "${plugins[@]}"; do
         case $plug in
             "Modbus")
@@ -145,6 +155,10 @@ PS3='Enter plugin would you install: '
             installScripting
             break
             ;;
+	    "Theme")
+	    installTheme
+	    break
+	    ;;
             "Quit")
             exit
             ;;
